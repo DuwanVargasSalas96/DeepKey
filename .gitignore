@@ -1,5 +1,8 @@
-#Hide Favicon
+# Hide img
+views/images
+
+# Hide Favicon
 views/favicon.ico
 
-#Hide DB connection
+# Hide DB connection
 models/Connection.php

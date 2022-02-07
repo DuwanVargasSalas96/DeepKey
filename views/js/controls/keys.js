@@ -1,30 +1,30 @@
-//List keys
+// List keys
 function listKeys() {
     $.ajax({
         url: "controllers/keys.php",
         type: "POST",
         data: { "listRequest": true },
         success: function (reply) {
-            //Print
+            // Print
             $("#listKeys").html(reply)
         },
         error: function (jqXHR, state, error) {
-            //Log
+            // Log
             console.log(error)
         }
     })
 }
 
-//Delete key
+// Delete key
 $(document).on("click", "#btnDeleteKey", function () {
     $.ajax({
         url: "controllers/keys.php",
         type: "POST",
         data: { "deleteKey": $(this).val() },
         success: function (reply) {
-            //Toast
+            // Toast
             $(".toast").toast("show")
-            //Print
+            // Print
             if (reply == 1) {
                 $(".toast .toast-body").addClass("bg-success").text("Key eliminada")
             }
@@ -33,87 +33,87 @@ $(document).on("click", "#btnDeleteKey", function () {
             }
         },
         error: function (jqXHR, state, error) {
-            //Log
+            // Log
             console.log(error)
         },
         complete: function (jqXHR, state) {
-            //Modal
+            // Modal
             $("#modalKey").modal("hide")
-            //Update list keys
+            // Update list keys
             listKeys()
         }
     })
 })
 
-//Show information key
+// Show information key
 $(document).on("click", "#listKeys > li", function () {
     $.ajax({
         url: "controllers/keys.php",
         type: "POST",
         data: { "informationKey": $(this).val() },
         success: function (reply) {
-            //Convert data
+            // Convert data
             var data = JSON.parse(reply)
-            //Print
+            // Print
             $(".modal-title").text(data["Name"])
             $("#formKey input#keyName").val(data["Name"])
             $("#formKey input#keyUser").val(data["User"])
             $("#formKey input#keyPassword").val(data["Password"])
         },
         error: function (jqXHR, state, error) {
-            //Log
+            // Log
             console.log(error)
         }
     })
 })
 
-//Submit modalKey
+// Submit modalKey
 $(document).on("submit", "#formKey", function (e) {
-    //Avoid default process
+    // Avoid default process
     e.preventDefault()
 
-    //Declare
+    // Declare
     var error = 0
 
-    //Check key name
+    // Check key name
     if (/^[\w\d\sñÑáéíóúÁÉÍÓÚ.]{3,32}$/.test($("#keyName").val()) == false) {
-        //Print
+        // Print
         $("#keyName").addClass("is-invalid")
         error++
     }
     else {
-        //Print
+        // Print
         $("#keyName").removeClass("is-invalid").addClass("is-valid")
     }
 
-    //Check key user
+    // Check key user
     if (/^[\w\d\sñÑáéíóúÁÉÍÓÚ.@]{5,32}$/.test($("#keyUser").val()) == false) {
-        //Print
+        // Print
         $("#keyUser").addClass("is-invalid")
         error++
     }
     else {
-        //Print
+        // Print
         $("#keyUser").removeClass("is-invalid").addClass("is-valid")
     }
 
-    //Check key password
+    // Check key password
     if (/^[\w\d\s.!¡@#$%&()\[\]]{3,32}$/.test($("#keyPassword").val()) == false) {
-        //Print
+        // Print
         $("#keyPassword").addClass("is-invalid")
         error++
     }
     else {
-        //Print
+        // Print
         $("#keyPassword").removeClass("is-invalid").addClass("is-valid")
     }
 
-    //Return
+    // Return
     if (error != 0) {
         return false
     }
     else {
-        //Add key
+        // Add key
         if ($("#btnEditKey").val() == "") {
             $.ajax({
                 url: "controllers/keys.php",
@@ -127,9 +127,9 @@ $(document).on("submit", "#formKey", function (e) {
                 },
 
                 success: function (reply) {
-                    //Toast
+                    // Toast
                     $(".toast").toast("show")
-                    //Print
+                    // Print
                     if (reply == 1) {
                         $(".toast .toast-body").addClass("bg-success").text("Key registrada")
                     }
@@ -138,13 +138,13 @@ $(document).on("submit", "#formKey", function (e) {
                     }
                 },
                 error: function (jqXHR, state, error) {
-                    //Log
+                    // Log
                     console.log(error)
                 },
                 complete: function (jqXHR, state) {
-                    //Modal
+                    // Modal
                     $("#modalKey").modal("hide")
-                    //Update list
+                    // Update list
                     listKeys()
                 }
             })
@@ -155,9 +155,9 @@ $(document).on("submit", "#formKey", function (e) {
                 type: "POST",
                 data: { "editKeyName": $("#keyName").val(), "editKeyUser": $("#keyUser").val(), "editKeyPassword": $("#keyPassword").val(), "editKey": $("#btnEditKey").val() },
                 success: function (reply) {
-                    //Toast
+                    // Toast
                     $(".toast").toast("show")
-                    //Print
+                    // Print
                     if (reply == 1) {
                         $(".toast .toast-body").addClass("bg-success").text("Key actualizada")
                     }
@@ -166,13 +166,13 @@ $(document).on("submit", "#formKey", function (e) {
                     }
                 },
                 error: function (jqXHR, state, error) {
-                    //Log
+                    // Log
                     console.log(error)
                 },
                 complete: function (jqXHR, state) {
-                    //Modal
+                    // Modal
                     $("#modalKey").modal("hide")
-                    //Update list
+                    // Update list
                     listKeys()
                 }
             })

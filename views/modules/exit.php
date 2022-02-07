@@ -1,9 +1,13 @@
 <?php
-    //Session control
+    /*--------------------------------------
+	  Logout Module
+	--------------------------------------*/
+
+    // Logout steps
     session_start();
     session_unset();
     session_destroy();
-    
-    //Redirect to page
+
+    // Redirect to page
     header("location:index.php?kb=login");
 ?>

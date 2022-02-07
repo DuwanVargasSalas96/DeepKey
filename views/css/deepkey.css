@@ -1,41 +1,17 @@
 html, body {
-    background: #e1e2e1;
-}
-
-div {
-    background-color: none;
-}
-
-label {
-    color: #0076f5;
+	background-color: #f4f4f4;
 }
 
 #containerToast {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
-.shadow {
-    box-shadow: 0 1px 10px #cbcbcb !important;
+.container {
+	background-color: white;
 }
 
-/*Mobile*/
-@media only screen and (max-width: 576px) {
-    #containerFormLogin {
-        margin-top: 4em;
-        padding: 3em;
-        width: 100%;
-    }
-}
-
-/*Medium*/
-@media only screen and (min-width: 576px) {
-    #containerFormLogin {
-        background-color: white;
-        box-shadow: 0 1px 10px #cbcbcb;
-        margin-top: 8em;
-        max-width: 420px;
-        padding: 2em;
-    }
+input, textarea {
+	background-color: #f4f4f4 !important; 
 }

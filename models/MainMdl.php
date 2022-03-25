@@ -9,10 +9,13 @@
 		{
 			// Declare
 			$dir = "views/modules/";
-			$modules = array("exit", "login", "home", "keylist", "profile", "registerProfile");
+			$modules = array("exit", "home", "keylist", "login", "profile", "registerProfile");
 			
 			// Set module
 			if (in_array($module, $modules)) {
+				$dir = $dir . $module . ".php";
+			}
+			else if ($module === "information") {
 				$dir = $dir . $module . ".php";
 			}
 			else {

@@ -34,18 +34,13 @@
 	<ul class="nav justify-content-end">
 		<li class="dropdown nav-item">
 			<a class="nav-link p-0 text-white" href="#" id="ddProfile" role="button" data-toggle="dropdown" aria-haspopup="true">
-				<i class="fas fa-user-astronaut" style="font-size: 24pt"></i>
+				<i class="fas fa-user-astronaut mr-2" style="font-size: 15pt"></i>
+				<?php
+					// Imprimir
+					echo $_SESSION["user"];
+				?>
 			</a>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="ddProfile">
-				<span class="dropdown-item-text">
-					
-					<?php
-						//Imprimir
-						echo $_SESSION["user"];
-					?>
-				
-				</span>
-				<div class="dropdown-divider"></div>
 				<a class="dropdown-item text-center" href="index.php?kb=exit">Cerrar sesión</a>
 			</div>
 		</li>

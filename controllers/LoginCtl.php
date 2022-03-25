@@ -9,8 +9,9 @@
 		{
 			// Catch data
 			if (isset($_POST["inpLoginUser"]) && 
-					isset($_POST["inpLoginPwd"]) &&
-					filter_var($_POST["inpLoginUser"], FILTER_VALIDATE_EMAIL)) {
+				isset($_POST["inpLoginPwd"]) &&
+				filter_var($_POST["inpLoginUser"], FILTER_VALIDATE_EMAIL) &&
+				preg_match(Regex::pwds(), $_POST["inpLoginPwd"])) {
 				
 				// Declare
 				$data = array("email" => strtolower($_POST["inpLoginUser"]), "password" => sha1($_POST["inpLoginPwd"]));
@@ -34,11 +35,10 @@
 				}
 				else {
 					// Toast
-					echo "<script>$(document).ready(function() {
-						$('.toast').toast('show');
-						$('.toast .toast-body').addClass('bg-danger').text('Datos de acceso incorrectos.');
-						$('#inpLoginUser, #inpLoginPwd').addClass('is-invalid');
-					});</script>";
+					echo "<script>
+						showToast('bg-danger', 'Los datos introducidos son incorrectos');
+						invalidInputs('#inpLoginUser, #inpLoginPwd');
+					</script>";
 				}
 			}
 		}

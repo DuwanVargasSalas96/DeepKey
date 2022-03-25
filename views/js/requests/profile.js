@@ -3,31 +3,41 @@
 --------------------------------------*/
 
 /* Function to get profile information */
-$(document).ready(function()
-{
-	// Request ajax
-	$.ajax ({
+function getProfileData() {
+	// Request get profile data
+	$.ajax({
 		url: "controllers/ProfileReq.php",
 
 		method: "POST",
 
-		data: { "process": "read" },
+		data: { "process": "getProfile" },
 
-		success: function(request) {
-			// Convert data
+		success: function (request) {
+			// test
+			console.log(request);
+
+			// Convert request
 			request = JSON.parse(request);
-			
+
 			// Set data to form
 			$("#inpProfileFirstName").val(request.firstName);
 			$("#inpProfileLastName").val(request.lastName);
 			$("#inpProfileEmail").val(request.email);
 		},
 
-		error: function(xhr, status) {
+		error: function (xhr, status) {
 			// Log
 			console.log("Get profile data error");
 		}
 	});
+}
+
+
+/* Function when document is ready */
+$(document).ready(function()
+{
+	// Get profile data
+	getProfileData();
 });
 
 
@@ -39,28 +49,17 @@ $(document).on("click", "#btnDeleteProfile", function() {
 		
 		method: "POST",
 		
-		data: { "process": "delete" },
+		data: { "process": "deleteProfile" },
 		
 		success: function(request) {
 			// Request control
 			if (request == 1) {
-				// Toast
-				$(document).ready(function() {
-					$(".toast").toast("show");
-					$(".toast .toast-body").addClass("bg-success").text("Perfil eliminado.");
-				});
-
 				// Redirect to page
-				setTimeout(function() {
-					window.location.href = "index.php?kb=exit";	
-				}, 2500);
+				window.location.href = "index.php?inf=2ec76b01237b65510384a92addca4f4730284807";
 			}
 			else {
 				// Toast
-				$(document).ready(function() {
-					$(".toast").toast("show");
-					$(".toast .toast-body").addClass("bg-danger").text("Perfil no eliminado.");
-				});
+				showToast("bg-danger", "Error en eliminación, intente nuevamente");
 			}
 		},
 

@@ -45,22 +45,16 @@
 					// Return
 					return "false";
 				}
-
-				// Close query
-				// $queryDB = null;
 			}	
 			else {
 				// Return
-				return "existent";
-
-				// Close query
-				// $queryDB = null;				
+				return "existent";		
 			}
 		}
 		
 
 		/* Method to get profile information */
-		public static function readProfile($email) {
+		public static function getProfileData($email) {
 			// Declare query
 			$queryDB = Connection::connect() -> prepare("SELECT FirstName, LastName, Email FROM Users WHERE Email = :email");
 
@@ -72,9 +66,6 @@
 
 			// Return
 			return $queryDB -> fetch();
-
-			// Close query
-			// $queryDB = null;
 		}
 
 		
@@ -95,9 +86,6 @@
 				
 				// Return
 				return $queryDB -> rowCount();
-
-				// Close query
-				// $queryDB = null;
 			}
 			else {
 				// Declare query
@@ -125,16 +113,10 @@
 
 					// Return
 					return $queryDB -> rowCount();
-
-					// Close query
-					// $queryDB = null;
 				}
 				else {
 					// Return
 					return 2;
-
-					// Cerrar consulta
-					// $queryDB = null;
 				}
 			}
 		}
@@ -155,9 +137,6 @@
 
 			// Return
 			return $queryDB -> rowCount();
-			
-			// Close query
-			// $queryDB = null;
 		}
 
 		
@@ -182,16 +161,10 @@
 
 				// Return
 				return $queryDB -> rowCount();
-
-				// Close query
-				// $queryDB = null;
 			}
 			else {
 				// Return
 				return 0;
-
-				// Close query
-				// $queryDB = null;
 			}
 		}
 	}

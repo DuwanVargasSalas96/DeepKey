@@ -10,40 +10,40 @@ $(document).on("submit", "#formProfileData", function() {
 	// Check inpProfileName
 	if (!regexTexts.test($("#inpProfileFirstName").val())) {
 		// Change class
-		$("#inpProfileFirstName").addClass("is-invalid");
+		invalidInputs("#inpProfileFirstName");
 
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpProfileFirstName").removeClass("is-invalid");
+		validInputs("#inpProfileFirstName");
 	}
 
 	// Check inpProfileLastName
 	if (!regexTexts.test($("#inpProfileLastName").val())) {
 		// Change class
-		$("#inpProfileLastName").addClass("is-invalid");
+		invalidInputs("#inpProfileLastName");
 
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpProfileLastName").removeClass("is-invalid");
+		validInputs("#inpProfileLastName");
 	}
 
 	// Check inpProfileEmail
 	if (!regexEmails.test($("#inpProfileEmail").val())) {
 		// Modificar clase
-		$("#inpProfileEmail").addClass("is-invalid");
+		invalidInputs("#inpProfileEmail");
 
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpProfileEmail").removeClass("is-invalid");
+		validInputs("#inpProfileEmail");
 	}
 
 	// Return
@@ -59,40 +59,40 @@ $(document).on("submit", "#formProfilePwd", function() {
 	// Validar Clave Anterior
 	if (!regexPwds.test($("#inpProfilePwdOld").val())) {
 		// Change class
-		$("#inpProfilePwdOld").addClass("is-invalid");
+		invalidInputs("#inpProfilePwdOld");
 
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpProfilePwdOld").removeClass("is-invalid");
+		validInputs("#inpProfilePwdOld");
 	}
 
 	// Validar Clave Nueva
 	if (!regexPwds.test($("#inpProfilePwdNew").val()) || $("#inpProfilePwdNew").val() == $("#inpProfilePwdOld").val()) {
 		// Change class
-		$("#inpProfilePwdNew").addClass("is-invalid");
+		invalidInputs("#inpProfilePwdNew");
 
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpProfilePwdNew").removeClass("is-invalid");
+		validInputs("#inpProfilePwdNew");
 	}
 
 	// Validar Confirmacion
 	if (!regexPwds.test($("#inpProfilePwdReply").val()) || $("#inpProfilePwdReply").val() != $("#inpProfilePwdNew").val()) {
 		// Change class
-		$("#inpProfilePwdReply").addClass("is-invalid");
+		invalidInputs("#inpProfilePwdReply");
 
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpProfilePwdReply").removeClass("is-invalid");
+		validInputs("#inpProfilePwdReply");
 	}
 
 	// Return

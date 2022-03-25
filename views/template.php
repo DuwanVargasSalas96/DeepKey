@@ -31,6 +31,10 @@
 			// Create navigation controller
 			$nav = new MainCtl();
 			$nav -> nav();
+
+			// Link to information page
+			$inf = new InformationCtl();
+			$inf -> main();
 		?>
 
 		<footer>

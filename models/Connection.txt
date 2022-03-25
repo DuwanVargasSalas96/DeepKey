@@ -1,0 +1,17 @@
+<?php
+	/*--------------------------------------
+	  Connection class model
+	--------------------------------------*/
+	class Connection
+	{	
+		/* Method to make connection to database */
+		public static function connect ()
+		{
+			// Declare
+			$conn = new PDO("mysql:hostname=<ip host>; dbname=deepkey", "<user>", "<password>");
+
+			// Return
+			return $conn;
+		}
+	}
+?>

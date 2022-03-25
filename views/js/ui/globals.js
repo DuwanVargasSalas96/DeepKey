@@ -29,3 +29,47 @@ $(document).on("hidden.bs.toast", ".toast", function ()
 	// Remove classes
 	$(".toast div.toast-body").removeClass("bg-success bg-danger");
 });
+
+/* Function to invalid inputs */
+function invalidInputs(inputs) {
+	$(document).ready(function() {
+		// Change inputs properties
+		$(inputs).addClass("is-invalid");
+	});
+}
+
+
+/* Function to valid inputs */
+function validInputs(inputs) {
+	$(document).ready(function() {
+		// Change inputs properties
+		$(inputs).removeClass("is-invalid");
+	});
+}
+
+
+/* Function to show Toast */
+function showToast(type, txt) {
+	$(document).ready(function() {
+		// Show toast
+		$(".toast").toast("show");
+
+		// Change toast properties
+		$(".toast .toast-body").addClass(type).text(txt);
+	});
+}
+
+
+/* Function to change information page */
+function changePageInformation(title, text, icon) {
+	$(document).ready(function() {
+		// Set title
+		$("#infTitle").text(title);
+
+		// Set text
+		$("#infText").text(text);
+		
+		// Change icon
+		$("#infIcon").addClass(icon);
+	});
+}

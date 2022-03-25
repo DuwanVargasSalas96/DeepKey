@@ -1,5 +1,5 @@
 <?php
-	//Create login controller	
+	// Create login controller	
 	$login = new LoginCtl();
 	$login -> login();
 ?>

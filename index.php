@@ -1,5 +1,6 @@
 <?php
 	// Import controllers and models
+	require_once "controllers/InformationCtl.php";
 	require_once "controllers/LoginCtl.php";
 	require_once "controllers/MainCtl.php";
 	require_once "controllers/ProfileCtl.php";

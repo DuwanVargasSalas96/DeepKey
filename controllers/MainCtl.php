@@ -1,6 +1,6 @@
 <?php
 	/*--------------------------------------
-	  Main class controller
+	  Main Class Controller
 	--------------------------------------*/
 	class MainCtl
 	{
@@ -19,6 +19,10 @@
 			if (isset($_GET["kb"])) {
 				// Set module
 				$module = $_GET["kb"];
+			}
+			else if (isset($_GET["inf"])) {
+				// Set module
+				$module = "information";
 			}
 			else {
 				// Set default module

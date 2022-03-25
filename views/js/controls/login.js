@@ -11,27 +11,27 @@ $(document).on("submit", "#formLogin", function()
 	// Check inpLoginUser
 	if (!regexEmails.test($("#inpLoginUser").val())) {
 		// Change class
-		$("#inpLoginUser").addClass("is-invalid");
+		invalidInputs("#inpLoginUser");
 		
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpLoginUser").removeClass("is-invalid");
+		validInputs("#inpLoginUser");
 	}
 
 	// Check inpLoginPwd
 	if (!regexPwds.test($("#inpLoginPwd").val())) {
 		// Change class
-		$("#inpLoginPwd").addClass("is-invalid");
+		invalidInputs("#inpLoginPwd");
 		
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpLoginPwd").removeClass("is-invalid");
+		validInputs("#inpLoginPwd");
 	}
 
 	// Return

@@ -11,66 +11,66 @@ $(document).on("submit", "#formRegister", function()
 	// Check inpRegisterFirstName
 	if (!regexTexts.test($("#inpRegisterFirstName").val())) {
 		// Change class
-		$("#inpRegisterFirstName").addClass("is-invalid");
+		invalidInputs("#inpRegisterFirstName");
 		
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpRegisterFirstName").removeClass("is-invalid");
+		validInputs("#inpRegisterFirstName");
 	}
 
 	// Check inpRegisterLastName
 	if (!regexTexts.test($("#inpRegisterLastName").val())) {
 		// Change class
-		$("#inpRegisterLastName").addClass("is-invalid");
+		invalidInputs("#inpRegisterLastName");
 
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpRegisterLastName").removeClass("is-invalid");
+		validInputs("#inpRegisterLastName");
 	}
 
 	// Check inpRegisterEmail
 	if (!regexEmails.test($("#inpRegisterEmail").val())) {
 		// Change class
-		$("#inpRegisterEmail").addClass("is-invalid");
+		invalidInputs("#inpRegisterEmail");
 
 		// Count
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpRegisterEmail").removeClass("is-invalid");
+		validInputs("#inpRegisterEmail");
 	}
 
 	// Check inpRegisterPwd
 	if (!regexPwds.test($("#inpRegisterPwd").val())) {
 		// Change class
-		$("#inpRegisterPwd").addClass("is-invalid");
+		invalidInputs("#inpRegisterPwd");
 
 		// Contador
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpRegisterPwd").removeClass("is-invalid");
+		validInputs("#inpRegisterPwd");
 	}
 
 	// Check inpRegisterPwdReply
 	if (!regexPwds.test($("#inpRegisterPwdReply").val()) || $("#inpRegisterPwdReply").val() != $("#inpRegisterPwd").val()) {
 		// Change class
-		$("#inpRegisterPwdReply").addClass("is-invalid");
+		invalidInputs("#inpRegisterPwdReply");
 
 		// Contador
 		errors++;
 	}
 	else {
 		// Change class
-		$("#inpRegisterPwdReply").removeClass("is-invalid");
+		validInputs("#inpRegisterPwdReply");
 	}
 
 	// Return

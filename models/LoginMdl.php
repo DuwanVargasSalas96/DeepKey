@@ -22,9 +22,6 @@
 			
 			// Return
 			return $queryDB -> fetch();
-			
-			// Close query
-			//$queryDB = null;
 		}
 	}
 ?>

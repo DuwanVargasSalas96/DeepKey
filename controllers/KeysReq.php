@@ -1,5 +1,4 @@
 <?php
-	
 	/* Session manager */
 	session_start();
 
@@ -12,6 +11,9 @@
 		exit();
 	}
 	
+	// Import controller
+	require_once "../controllers/Regex.php";
+
 	// Import model
 	require_once "../models/KeysMdl.php";
 
@@ -21,9 +23,9 @@
 
 	/* Code to get key */
 	if (isset($_POST["process"]) &&
-		isset($_POST["deepKeyID"]) &&
-		$_POST["process"] === "getKey") {
-		
+		$_POST["process"] === "getKey" &&
+		isset($_POST["deepKeyID"]))
+	{
 		// Call model
 		$request = KeysMdl::getKey($_POST["deepKeyID"], $_SESSION["user"]);
 
@@ -37,7 +39,6 @@
 
 	/* Code to get keys */
 	if (isset($_POST["process"]) && $_POST["process"] === "getKeys") {
-		
 		// Call model
 		$request = KeysMdl::getKeys($_SESSION["user"]);
 
@@ -51,16 +52,16 @@
 
 	/* Code to create key */
 	if (isset($_POST["process"]) &&
+		$_POST["process"] === "createKey" &&
 		isset($_POST["keyName"]) &&
 		isset($_POST["keyUser"]) &&
 		isset($_POST["keyPwd"]) &&
 		isset($_POST["keyNotes"]) &&
-		$_POST["process"] === "createKey" /* &&
-		preg_match(regex::keyNames(), $_POST["keyName"]) &&
-		preg_match(regex::keyUsers(), $_POST["keyUser"]) &&
-		preg_match(regex::keyPwds(), $_POST["keyPwd"]) &&
-		preg_match(regex::keyNotes(), $_POST["keyNotes"])*/) {
-		
+		preg_match(Regex::keyNames(), $_POST["keyName"]) &&
+		preg_match(Regex::keyUsers(), $_POST["keyUser"]) &&
+		preg_match(Regex::keyPwds(), $_POST["keyPwd"]) &&
+		preg_match(Regex::keyNotes(), $_POST["keyNotes"]))
+	{	
 		// Declare
 		$data = array("user" => $_SESSION["user"], "keyName" => $_POST["keyName"], "keyUser" => $_POST["keyUser"], "keyPwd" => $_POST["keyPwd"], "keyNotes" => $_POST["keyNotes"]);
 
@@ -71,13 +72,17 @@
 	
 	/* Code to update key */
 	if (isset($_POST["process"]) &&
+		$_POST["process"] === "updateKey" &&
 		isset($_POST["deepKeyID"]) &&
 		isset($_POST["keyName"]) &&
 		isset($_POST["keyUser"]) &&
 		isset($_POST["keyPwd"]) &&
 		isset($_POST["keyNotes"]) &&
-		$_POST["process"] === "updateKey") {
-		
+		preg_match(Regex::keyNames(), $_POST["keyName"]) &&
+		preg_match(Regex::keyUsers(), $_POST["keyUser"]) &&
+		preg_match(Regex::keyPwds(), $_POST["keyPwd"]) &&
+		preg_match(Regex::keyNotes(), $_POST["keyNotes"]))
+	{	
 		// Declare
 		$data = array("deepKeyID" => $_POST["deepKeyID"], "keyName" => $_POST["keyName"], "keyUser" => $_POST["keyUser"], "keyPwd" => $_POST["keyPwd"], "keyNotes" => $_POST["keyNotes"], "user" => $_SESSION["user"]);
 
@@ -89,8 +94,8 @@
 	/* Code to delete key */
 	if (isset($_POST["process"]) &&
 		isset($_POST["deepKeyID"]) &&
-		$_POST["process"] === "deleteKey") {
-		
+		$_POST["process"] === "deleteKey")
+	{		
 		// Return
 		echo $request = KeysMdl::deleteKey($_POST["deepKeyID"], $_SESSION["user"]);
 	}

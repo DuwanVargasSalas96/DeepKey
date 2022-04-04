@@ -1,5 +1,4 @@
 <?php
-		
 	/* Session control */
 	session_start();
 
